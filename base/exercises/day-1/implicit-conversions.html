@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="bn" class="sidebar-visible no-js light">
+    
+<!-- google.github.io/comprehensive-rust/bn/exercises/day-1/implicit-conversions.html  08:57:37 GMT -->
+<!-- /bn by Rasel --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /bn by Rasel -->
+<head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ইমপ্লিসিট রূপান্তর - Comprehensive Rust 🦀</title>
+
+        <script async src="../../../../../www.gstatic.com/brandstudio/kato/cookie_choice_component/cookie_consent_bar.v3.js"
+                data-autoload-cookie-consent-bar="true"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN78TEJMRW"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZN78TEJMRW');
+        </script>
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../svgbob.css">
+        <link rel="stylesheet" href="../../speaker-notes.css">
+        <link rel="stylesheet" href="../../language-picker.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../index.html";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index-2.html">Comprehensive Rust 🦀 এ আপনাকে স্বাগতম</a></li><li class="chapter-item "><a href="../../running-the-course.html"><strong aria-hidden="true">1.</strong> কোর্স চালানো</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../running-the-course/course-structure.html"><strong aria-hidden="true">1.1.</strong> কোর্স এর গঠন</a></li><li class="chapter-item "><a href="../../running-the-course/keyboard-shortcuts.html"><strong aria-hidden="true">1.2.</strong> কিবোর্ড শর্টকাট</a></li><li class="chapter-item "><a href="../../running-the-course/translations.html"><strong aria-hidden="true">1.3.</strong> অনুবাদ</a></li></ol></li><li class="chapter-item "><a href="../../cargo.html"><strong aria-hidden="true">2.</strong> Cargo ব্যবহার</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cargo/rust-ecosystem.html"><strong aria-hidden="true">2.1.</strong> রাস্ট ইকোসিস্টেম</a></li><li class="chapter-item "><a href="../../cargo/code-samples.html"><strong aria-hidden="true">2.2.</strong> কোড নমুনা</a></li><li class="chapter-item "><a href="../../cargo/running-locally.html"><strong aria-hidden="true">2.3.</strong> Cargo Locally চালানো হচ্ছে</a></li></ol></li><li class="chapter-item "><li class="part-title">প্রথম দিনঃ সকাল</li><li class="spacer"></li><li class="chapter-item "><a href="../../welcome-day-1.html"><strong aria-hidden="true">3.</strong> স্বাগতম</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../welcome-day-1/what-is-rust.html"><strong aria-hidden="true">3.1.</strong> Rust কি?</a></li></ol></li><li class="chapter-item "><a href="../../hello-world.html"><strong aria-hidden="true">4.</strong> Hello World!</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hello-world/small-example.html"><strong aria-hidden="true">4.1.</strong> ছোট্ট উদাহরণ</a></li></ol></li><li class="chapter-item "><a href="../../why-rust.html"><strong aria-hidden="true">5.</strong> Rust কেনো?</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../why-rust/compile-time.html"><strong aria-hidden="true">5.1.</strong> কম্পাইল সময়ের গ্যারান্টি</a></li><li class="chapter-item "><a href="../../why-rust/runtime.html"><strong aria-hidden="true">5.2.</strong> রানটাইম গ্যরান্টি</a></li><li class="chapter-item "><a href="../../why-rust/modern.html"><strong aria-hidden="true">5.3.</strong> আধুনিক সুবিধাসমূহ</a></li></ol></li><li class="chapter-item "><a href="../../basic-syntax.html"><strong aria-hidden="true">6.</strong> মৌলিক সিনট্যাক্স</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../basic-syntax/scalar-types.html"><strong aria-hidden="true">6.1.</strong> স্কেলার টাইপ</a></li><li class="chapter-item "><a href="../../basic-syntax/compound-types.html"><strong aria-hidden="true">6.2.</strong> কম্পাউন্ড টাইপ</a></li><li class="chapter-item "><a href="../../basic-syntax/references.html"><strong aria-hidden="true">6.3.</strong> রেফারেন্স</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../basic-syntax/references-dangling.html"><strong aria-hidden="true">6.3.1.</strong> ড্যাঙ্গলিং রেফারেন্স</a></li></ol></li><li class="chapter-item "><a href="../../basic-syntax/slices.html"><strong aria-hidden="true">6.4.</strong> Slices</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../basic-syntax/string-slices.html"><strong aria-hidden="true">6.4.1.</strong> String বনাম str</a></li></ol></li><li class="chapter-item "><a href="../../basic-syntax/functions.html"><strong aria-hidden="true">6.5.</strong> ফাংশন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../basic-syntax/rustdoc.html"><strong aria-hidden="true">6.5.1.</strong> Rustdoc</a></li><li class="chapter-item "><a href="../../basic-syntax/methods.html"><strong aria-hidden="true">6.5.2.</strong> মেথডস</a></li><li class="chapter-item "><a href="../../basic-syntax/functions-interlude.html"><strong aria-hidden="true">6.5.3.</strong> অভারলোডিং</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="morning.html"><strong aria-hidden="true">7.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implicit-conversions.html" class="active"><strong aria-hidden="true">7.1.</strong> ইমপ্লিসিট রূপান্তর</a></li><li class="chapter-item "><a href="for-loops.html"><strong aria-hidden="true">7.2.</strong> Arrays এবং for-Loops</a></li></ol></li><li class="chapter-item "><li class="part-title">প্রথম দিনঃ বিকাল</li><li class="chapter-item "><a href="../../basic-syntax/variables.html"><strong aria-hidden="true">8.</strong> ভেরিয়েবল</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../basic-syntax/type-inference.html"><strong aria-hidden="true">8.1.</strong> টাইপ অনুমান</a></li><li class="chapter-item "><a href="../../basic-syntax/static-and-const.html"><strong aria-hidden="true">8.2.</strong> static & const</a></li><li class="chapter-item "><a href="../../basic-syntax/scopes-shadowing.html"><strong aria-hidden="true">8.3.</strong> Scopes and Shadowing</a></li></ol></li><li class="chapter-item "><a href="../../memory-management.html"><strong aria-hidden="true">9.</strong> মেমোরি ব্যবস্থাপনা</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../memory-management/stack-vs-heap.html"><strong aria-hidden="true">9.1.</strong> Stack বনাম Heap</a></li><li class="chapter-item "><a href="../../memory-management/stack.html"><strong aria-hidden="true">9.2.</strong> Stack মেমোরি</a></li><li class="chapter-item "><a href="../../memory-management/manual.html"><strong aria-hidden="true">9.3.</strong> ম্যানুয়াল মেমোরি ব্যবস্থাপনা</a></li><li class="chapter-item "><a href="../../memory-management/scope-based.html"><strong aria-hidden="true">9.4.</strong> স্কোপ ভিত্তিক মেমোরি ব্যবস্থাপনা</a></li><li class="chapter-item "><a href="../../memory-management/garbage-collection.html"><strong aria-hidden="true">9.5.</strong> Garbage Collection</a></li><li class="chapter-item "><a href="../../memory-management/rust.html"><strong aria-hidden="true">9.6.</strong> Rust মেমোরি ব্যবস্থাপনা</a></li><li class="chapter-item "><a href="../../memory-management/comparison.html"><strong aria-hidden="true">9.7.</strong> তুলনা</a></li></ol></li><li class="chapter-item "><a href="../../ownership.html"><strong aria-hidden="true">10.</strong> মালিকানা</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../ownership/move-semantics.html"><strong aria-hidden="true">10.1.</strong> Move Semantics</a></li><li class="chapter-item "><a href="../../ownership/moved-strings-rust.html"><strong aria-hidden="true">10.2.</strong> Moved Strings in Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../ownership/double-free-modern-cpp.html"><strong aria-hidden="true">10.2.1.</strong> আধুনিক C++ এ ডবল মুক্ত</a></li></ol></li><li class="chapter-item "><a href="../../ownership/moves-function-calls.html"><strong aria-hidden="true">10.3.</strong> Moves in Function Calls</a></li><li class="chapter-item "><a href="../../ownership/copy-clone.html"><strong aria-hidden="true">10.4.</strong> অনুলিপি এবং ক্লোনিং</a></li><li class="chapter-item "><a href="../../ownership/borrowing.html"><strong aria-hidden="true">10.5.</strong> ধার নেওয়া</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../ownership/shared-unique-borrows.html"><strong aria-hidden="true">10.5.1.</strong> ভাগ করা ধার এবং অনন্য ধার</a></li></ol></li><li class="chapter-item "><a href="../../ownership/lifetimes.html"><strong aria-hidden="true">10.6.</strong> জীবনকাল</a></li><li class="chapter-item "><a href="../../ownership/lifetimes-function-calls.html"><strong aria-hidden="true">10.7.</strong> ফাংশন কল এ জীবনকাল</a></li><li class="chapter-item "><a href="../../ownership/lifetimes-data-structures.html"><strong aria-hidden="true">10.8.</strong> ডেটা স্ট্রাকচার এ জীবনকাল</a></li></ol></li><li class="chapter-item "><a href="afternoon.html"><strong aria-hidden="true">11.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="book-library.html"><strong aria-hidden="true">11.1.</strong> Storing Books</a></li><li class="chapter-item "><a href="iterators-and-ownership.html"><strong aria-hidden="true">11.2.</strong> Iterators and Ownership</a></li></ol></li><li class="chapter-item "><li class="part-title">দ্বিতীয় দিনঃ সকাল</li><li class="spacer"></li><li class="chapter-item "><a href="../../welcome-day-2.html"><strong aria-hidden="true">12.</strong> স্বাগতম</a></li><li class="chapter-item "><a href="../../structs.html"><strong aria-hidden="true">13.</strong> Structs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../structs/tuple-structs.html"><strong aria-hidden="true">13.1.</strong> Tuple Structs</a></li><li class="chapter-item "><a href="../../structs/field-shorthand.html"><strong aria-hidden="true">13.2.</strong> Field Shorthand Syntax</a></li></ol></li><li class="chapter-item "><a href="../../enums.html"><strong aria-hidden="true">14.</strong> Enums</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../enums/variant-payloads.html"><strong aria-hidden="true">14.1.</strong> ভিন্ন Payloads</a></li><li class="chapter-item "><a href="../../enums/sizes.html"><strong aria-hidden="true">14.2.</strong> Enum এর মাপ</a></li></ol></li><li class="chapter-item "><a href="../../methods.html"><strong aria-hidden="true">15.</strong> মেথডস</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../methods/receiver.html"><strong aria-hidden="true">15.1.</strong> Method Receiver</a></li><li class="chapter-item "><a href="../../methods/example.html"><strong aria-hidden="true">15.2.</strong> উদাহরণ</a></li></ol></li><li class="chapter-item "><a href="../../pattern-matching.html"><strong aria-hidden="true">16.</strong> প্যাটার্ন মিলানো</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pattern-matching/destructuring-enums.html"><strong aria-hidden="true">16.1.</strong> Enums ডিস্ট্রাকচার</a></li><li class="chapter-item "><a href="../../pattern-matching/destructuring-structs.html"><strong aria-hidden="true">16.2.</strong> Structs ডিস্ট্রাকচার </a></li><li class="chapter-item "><a href="../../pattern-matching/destructuring-arrays.html"><strong aria-hidden="true">16.3.</strong> Arrays ডিস্ট্রাকচার </a></li><li class="chapter-item "><a href="../../pattern-matching/match-guards.html"><strong aria-hidden="true">16.4.</strong> Match Guards</a></li></ol></li><li class="chapter-item "><a href="../day-2/morning.html"><strong aria-hidden="true">17.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../day-2/health-statistics.html"><strong aria-hidden="true">17.1.</strong> স্বাস্থ্য পরিসংখ্যান</a></li><li class="chapter-item "><a href="../day-2/points-polygons.html"><strong aria-hidden="true">17.2.</strong> Points and Polygons</a></li></ol></li><li class="chapter-item "><li class="part-title">দ্বিতীয় দিনঃ বিকাল</li><li class="chapter-item "><a href="../../control-flow.html"><strong aria-hidden="true">18.</strong> প্রবাহ নিয়ন্ত্রণ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../control-flow/blocks.html"><strong aria-hidden="true">18.1.</strong> Blocks</a></li><li class="chapter-item "><a href="../../control-flow/if-expressions.html"><strong aria-hidden="true">18.2.</strong> if এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/if-let-expressions.html"><strong aria-hidden="true">18.3.</strong> if let এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/while-expressions.html"><strong aria-hidden="true">18.4.</strong> while এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/while-let-expressions.html"><strong aria-hidden="true">18.5.</strong> while let এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/for-expressions.html"><strong aria-hidden="true">18.6.</strong> for এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/loop-expressions.html"><strong aria-hidden="true">18.7.</strong> loop এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/match-expressions.html"><strong aria-hidden="true">18.8.</strong> match এক্সপ্রেশন</a></li><li class="chapter-item "><a href="../../control-flow/break-continue.html"><strong aria-hidden="true">18.9.</strong> break & continue</a></li></ol></li><li class="chapter-item "><a href="../../std.html"><strong aria-hidden="true">19.</strong> স্ট্যান্ডার্ড লাইব্রেরি</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../std/option-result.html"><strong aria-hidden="true">19.1.</strong> Option এবং Result</a></li><li class="chapter-item "><a href="../../std/string.html"><strong aria-hidden="true">19.2.</strong> String</a></li><li class="chapter-item "><a href="../../std/vec.html"><strong aria-hidden="true">19.3.</strong> Vec</a></li><li class="chapter-item "><a href="../../std/hashmap.html"><strong aria-hidden="true">19.4.</strong> HashMap</a></li><li class="chapter-item "><a href="../../std/box.html"><strong aria-hidden="true">19.5.</strong> Box</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../std/box-recursive.html"><strong aria-hidden="true">19.5.1.</strong> রিকার্সিভ ডেটা টাইপ</a></li><li class="chapter-item "><a href="../../std/box-niche.html"><strong aria-hidden="true">19.5.2.</strong> Niche অপটিমাইজেশন</a></li></ol></li><li class="chapter-item "><a href="../../std/rc.html"><strong aria-hidden="true">19.6.</strong> Rc</a></li><li class="chapter-item "><a href="../../std/cell.html"><strong aria-hidden="true">19.7.</strong> Cell/RefCell</a></li></ol></li><li class="chapter-item "><a href="../../modules.html"><strong aria-hidden="true">20.</strong> Modules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../modules/visibility.html"><strong aria-hidden="true">20.1.</strong> দৃশ্যমানতা</a></li><li class="chapter-item "><a href="../../modules/paths.html"><strong aria-hidden="true">20.2.</strong> Paths</a></li><li class="chapter-item "><a href="../../modules/filesystem.html"><strong aria-hidden="true">20.3.</strong> Filesystem Hierarchy</a></li></ol></li><li class="chapter-item "><a href="../day-2/afternoon.html"><strong aria-hidden="true">21.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../day-2/luhn.html"><strong aria-hidden="true">21.1.</strong> লুন অ্যালগরিদম</a></li><li class="chapter-item "><a href="../day-2/strings-iterators.html"><strong aria-hidden="true">21.2.</strong> Strings এবং Iterators</a></li></ol></li><li class="chapter-item "><li class="part-title">তৃতীয় দিনঃ সকাল</li><li class="spacer"></li><li class="chapter-item "><a href="../../welcome-day-3.html"><strong aria-hidden="true">22.</strong> স্বাগতম</a></li><li class="chapter-item "><a href="../../generics.html"><strong aria-hidden="true">23.</strong> জেনেরিকস</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../generics/data-types.html"><strong aria-hidden="true">23.1.</strong> জেনেরিক ডেটা টাইপ</a></li><li class="chapter-item "><a href="../../generics/methods.html"><strong aria-hidden="true">23.2.</strong> জেনেরিক মেথড-সমূহ</a></li><li class="chapter-item "><a href="../../generics/monomorphization.html"><strong aria-hidden="true">23.3.</strong> Monomorphization</a></li></ol></li><li class="chapter-item "><a href="../../traits.html"><strong aria-hidden="true">24.</strong> Traits</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../traits/trait-objects.html"><strong aria-hidden="true">24.1.</strong> Trait Objects</a></li><li class="chapter-item "><a href="../../traits/deriving-traits.html"><strong aria-hidden="true">24.2.</strong> Deriving Traits</a></li><li class="chapter-item "><a href="../../traits/default-methods.html"><strong aria-hidden="true">24.3.</strong> ডিফল্ট মেথড-সমূহ</a></li><li class="chapter-item "><a href="../../traits/trait-bounds.html"><strong aria-hidden="true">24.4.</strong> Trait Bounds</a></li><li class="chapter-item "><a href="../../traits/impl-trait.html"><strong aria-hidden="true">24.5.</strong> impl Trait</a></li></ol></li><li class="chapter-item "><a href="../../traits/important-traits.html"><strong aria-hidden="true">25.</strong> গুরুত্বপূর্ণ Traits</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../traits/iterator.html"><strong aria-hidden="true">25.1.</strong> Iterator</a></li><li class="chapter-item "><a href="../../traits/from-iterator.html"><strong aria-hidden="true">25.2.</strong> FromIterator</a></li><li class="chapter-item "><a href="../../traits/from-into.html"><strong aria-hidden="true">25.3.</strong> From এবং Into</a></li><li class="chapter-item "><a href="../../traits/read-write.html"><strong aria-hidden="true">25.4.</strong> Read এবং Write</a></li><li class="chapter-item "><a href="../../traits/drop.html"><strong aria-hidden="true">25.5.</strong> Drop</a></li><li class="chapter-item "><a href="../../traits/default.html"><strong aria-hidden="true">25.6.</strong> Default</a></li><li class="chapter-item "><a href="../../traits/operators.html"><strong aria-hidden="true">25.7.</strong> অপারেটরঃ Add, Mul, ...</a></li><li class="chapter-item "><a href="../../traits/closures.html"><strong aria-hidden="true">25.8.</strong> Closures: Fn, FnMut, FnOnce</a></li></ol></li><li class="chapter-item "><a href="../day-3/morning.html"><strong aria-hidden="true">26.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../day-3/simple-gui.html"><strong aria-hidden="true">26.1.</strong> একটি সাধারণ GUI  লাইব্রেরি</a></li></ol></li><li class="chapter-item "><li class="part-title">তৃতীয় দিনঃ বিকাল</li><li class="chapter-item "><a href="../../error-handling.html"><strong aria-hidden="true">27.</strong> ত্রুটি সামলানো</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../error-handling/panics.html"><strong aria-hidden="true">27.1.</strong> Panics-প্যানিক</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../error-handling/panic-unwind.html"><strong aria-hidden="true">27.1.1.</strong> Catching Stack Unwinding</a></li></ol></li><li class="chapter-item "><a href="../../error-handling/result.html"><strong aria-hidden="true">27.2.</strong> স্ট্রাকচার্ড এরর হ্যান্ডলিং</a></li><li class="chapter-item "><a href="../../error-handling/try-operator.html"><strong aria-hidden="true">27.3.</strong> এর সাহায্যে এরর/ত্রুটি হস্তান্তর করা ?</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../error-handling/converting-error-types.html"><strong aria-hidden="true">27.3.1.</strong> এররের টাইপ রূপান্তর</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../error-handling/converting-error-types-example.html"><strong aria-hidden="true">27.3.1.1.</strong> উদাহরণ</a></li></ol></li><li class="chapter-item "><a href="../../error-handling/deriving-error-enums.html"><strong aria-hidden="true">27.3.2.</strong> এররের ইনামগুলো বের করা</a></li><li class="chapter-item "><a href="../../error-handling/dynamic-errors.html"><strong aria-hidden="true">27.3.3.</strong> ডায়নামিক ত্রুটির ধরন</a></li><li class="chapter-item "><a href="../../error-handling/error-contexts.html"><strong aria-hidden="true">27.3.4.</strong> ত্রুটিতে কন্টেক্সট যোগ করা</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../testing.html"><strong aria-hidden="true">28.</strong> টেস্টিং</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../testing/unit-tests.html"><strong aria-hidden="true">28.1.</strong> ইউনিট টেস্ট</a></li><li class="chapter-item "><a href="../../testing/test-modules.html"><strong aria-hidden="true">28.2.</strong> টেস্ট মডিউল</a></li><li class="chapter-item "><a href="../../testing/doc-tests.html"><strong aria-hidden="true">28.3.</strong> ডকুমেন্টেশন টেস্ট</a></li><li class="chapter-item "><a href="../../testing/integration-tests.html"><strong aria-hidden="true">28.4.</strong> ইন্টিগ্রেশন টেস্ট</a></li><li class="chapter-item "><a href="../../testing/useful-crates.html"><strong aria-hidden="true">28.5.</strong> দরকারী ক্রেট-সমূহ</a></li></ol></li><li class="chapter-item "><a href="../../unsafe.html"><strong aria-hidden="true">29.</strong> অনিরাপদ রাস্ট</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../unsafe/raw-pointers.html"><strong aria-hidden="true">29.1.</strong> র পয়েন্টার ডি-রেফারেন্স করা</a></li><li class="chapter-item "><a href="../../unsafe/mutable-static-variables.html"><strong aria-hidden="true">29.2.</strong> পরিবর্তনযোগ্য স্ট্যাটিক ভেরিয়েবলস</a></li><li class="chapter-item "><a href="../../unsafe/unions.html"><strong aria-hidden="true">29.3.</strong> Unions</a></li><li class="chapter-item "><a href="../../unsafe/calling-unsafe-functions.html"><strong aria-hidden="true">29.4.</strong> অনিরাপদ ফাংশন ডাকা</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../unsafe/writing-unsafe-functions.html"><strong aria-hidden="true">29.4.1.</strong> অনিরাপদ ফাংশন লেখা</a></li><li class="chapter-item "><a href="../../unsafe/extern-functions.html"><strong aria-hidden="true">29.4.2.</strong> বহিরাগত ফাংশন</a></li></ol></li><li class="chapter-item "><a href="../../unsafe/unsafe-traits.html"><strong aria-hidden="true">29.5.</strong> অনিরাপদ Traits বাস্তবায়ন</a></li></ol></li><li class="chapter-item "><a href="../day-3/afternoon.html"><strong aria-hidden="true">30.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../day-3/safe-ffi-wrapper.html"><strong aria-hidden="true">30.1.</strong> নিরাপদ FFI  মোড়ক</a></li></ol></li><li class="chapter-item "><li class="part-title">Android</li><li class="spacer"></li><li class="chapter-item "><a href="../../android.html"><strong aria-hidden="true">31.</strong> স্বাগতম</a></li><li class="chapter-item "><a href="../../android/setup.html"><strong aria-hidden="true">32.</strong> সেটআপ</a></li><li class="chapter-item "><a href="../../android/build-rules.html"><strong aria-hidden="true">33.</strong> গঠনের নিয়ম</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../android/build-rules/binary.html"><strong aria-hidden="true">33.1.</strong> বাইনারি</a></li><li class="chapter-item "><a href="../../android/build-rules/library.html"><strong aria-hidden="true">33.2.</strong> লাইব্রেরি</a></li></ol></li><li class="chapter-item "><a href="../../android/aidl.html"><strong aria-hidden="true">34.</strong> AIDL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../android/aidl/interface.html"><strong aria-hidden="true">34.1.</strong> ইন্টারফেস</a></li><li class="chapter-item "><a href="../../android/aidl/implementation.html"><strong aria-hidden="true">34.2.</strong> বাস্তবায়ন</a></li><li class="chapter-item "><a href="../../android/aidl/server.html"><strong aria-hidden="true">34.3.</strong> সার্ভার</a></li><li class="chapter-item "><a href="../../android/aidl/deploy.html"><strong aria-hidden="true">34.4.</strong> স্থাপন</a></li><li class="chapter-item "><a href="../../android/aidl/client.html"><strong aria-hidden="true">34.5.</strong> ক্লায়েন্ট</a></li><li class="chapter-item "><a href="../../android/aidl/changing.html"><strong aria-hidden="true">34.6.</strong> API পরিবর্তন</a></li></ol></li><li class="chapter-item "><a href="../../android/logging.html"><strong aria-hidden="true">35.</strong> Logging</a></li><li class="chapter-item "><a href="../../android/interoperability.html"><strong aria-hidden="true">36.</strong> আন্তঃকার্যক্ষমতা</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../android/interoperability/with-c.html"><strong aria-hidden="true">36.1.</strong> C এর সাথে</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../android/interoperability/with-c/bindgen.html"><strong aria-hidden="true">36.1.1.</strong> Bindgen এর মাধ্যমে C কে ডাকা</a></li><li class="chapter-item "><a href="../../android/interoperability/with-c/rust.html"><strong aria-hidden="true">36.1.2.</strong> C থেকে Rust কে ডাকা  </a></li></ol></li><li class="chapter-item "><a href="../../android/interoperability/cpp.html"><strong aria-hidden="true">36.2.</strong> C++এর সাথে</a></li><li class="chapter-item "><a href="../../android/interoperability/java.html"><strong aria-hidden="true">36.3.</strong> Java এর সাথে</a></li></ol></li><li class="chapter-item "><a href="../android/morning.html"><strong aria-hidden="true">37.</strong> অনুশীলন</a></li><li class="chapter-item affix "><li class="part-title">Bare Metal: সকাল</li><li class="spacer"></li><li class="chapter-item "><a href="../../bare-metal.html"><strong aria-hidden="true">38.</strong> স্বাগতম</a></li><li class="chapter-item "><a href="../../bare-metal/no_std.html"><strong aria-hidden="true">39.</strong> no_std</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/minimal.html"><strong aria-hidden="true">39.1.</strong> একটি ন্যূনতম উদাহরণ</a></li><li class="chapter-item "><a href="../../bare-metal/alloc.html"><strong aria-hidden="true">39.2.</strong> alloc</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers.html"><strong aria-hidden="true">40.</strong> মাইক্রোকন্ট্রোলার</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/microcontrollers/mmio.html"><strong aria-hidden="true">40.1.</strong> Raw MMIO</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/pacs.html"><strong aria-hidden="true">40.2.</strong> PACs</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/hals.html"><strong aria-hidden="true">40.3.</strong> HAL Crates</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/board-support.html"><strong aria-hidden="true">40.4.</strong> Board Support Crates</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/type-state.html"><strong aria-hidden="true">40.5.</strong> The Type State Pattern</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/embedded-hal.html"><strong aria-hidden="true">40.6.</strong> embedded-hal</a></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/probe-rs.html"><strong aria-hidden="true">40.7.</strong> probe-rs, cargo-embed</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/microcontrollers/debugging.html"><strong aria-hidden="true">40.7.1.</strong> ডিবাগিং</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/microcontrollers/other-projects.html"><strong aria-hidden="true">40.8.</strong> Other Projects</a></li></ol></li><li class="chapter-item "><a href="../bare-metal/morning.html"><strong aria-hidden="true">41.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../bare-metal/compass.html"><strong aria-hidden="true">41.1.</strong> Compass</a></li></ol></li><li class="chapter-item "><li class="part-title">Bare Metal: Afternoon</li><li class="chapter-item "><a href="../../bare-metal/aps.html"><strong aria-hidden="true">42.</strong> এপ্লিকেশন প্রসেসর</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/aps/entry-point.html"><strong aria-hidden="true">42.1.</strong> Getting Ready to Rust</a></li><li class="chapter-item "><a href="../../bare-metal/aps/inline-assembly.html"><strong aria-hidden="true">42.2.</strong> Inline Assembly</a></li><li class="chapter-item "><a href="../../bare-metal/aps/mmio.html"><strong aria-hidden="true">42.3.</strong> MMIO</a></li><li class="chapter-item "><a href="../../bare-metal/aps/uart.html"><strong aria-hidden="true">42.4.</strong> চলুন একটি UART Driver লিখি</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/aps/uart/traits.html"><strong aria-hidden="true">42.4.1.</strong> আরও Traits</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/aps/better-uart.html"><strong aria-hidden="true">42.5.</strong> একটি উন্নতর UART ড্রাইভার</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/aps/better-uart/bitflags.html"><strong aria-hidden="true">42.5.1.</strong> Bitflags</a></li><li class="chapter-item "><a href="../../bare-metal/aps/better-uart/registers.html"><strong aria-hidden="true">42.5.2.</strong> একাধিক রেজিস্টারস</a></li><li class="chapter-item "><a href="../../bare-metal/aps/better-uart/driver.html"><strong aria-hidden="true">42.5.3.</strong> Driver</a></li><li class="chapter-item "><a href="../../bare-metal/aps/better-uart/using.html"><strong aria-hidden="true">42.5.4.</strong> Using It</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/aps/logging.html"><strong aria-hidden="true">42.6.</strong> Logging</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/aps/logging/using.html"><strong aria-hidden="true">42.6.1.</strong> Using It</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/aps/exceptions.html"><strong aria-hidden="true">42.7.</strong> Exceptions</a></li><li class="chapter-item "><a href="../../bare-metal/aps/other-projects.html"><strong aria-hidden="true">42.8.</strong> Other Projects</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/useful-crates.html"><strong aria-hidden="true">43.</strong> উপকারী ক্রেটসমূহ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/useful-crates/zerocopy.html"><strong aria-hidden="true">43.1.</strong> zerocopy</a></li><li class="chapter-item "><a href="../../bare-metal/useful-crates/aarch64-paging.html"><strong aria-hidden="true">43.2.</strong> aarch64-paging</a></li><li class="chapter-item "><a href="../../bare-metal/useful-crates/buddy_system_allocator.html"><strong aria-hidden="true">43.3.</strong> buddy_system_allocator</a></li><li class="chapter-item "><a href="../../bare-metal/useful-crates/tinyvec.html"><strong aria-hidden="true">43.4.</strong> tinyvec</a></li><li class="chapter-item "><a href="../../bare-metal/useful-crates/spin.html"><strong aria-hidden="true">43.5.</strong> spin</a></li></ol></li><li class="chapter-item "><a href="../../bare-metal/android.html"><strong aria-hidden="true">44.</strong> Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../bare-metal/android/vmbase.html"><strong aria-hidden="true">44.1.</strong> vmbase</a></li></ol></li><li class="chapter-item "><a href="../bare-metal/afternoon.html"><strong aria-hidden="true">45.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../bare-metal/rtc.html"><strong aria-hidden="true">45.1.</strong> RTC Driver</a></li></ol></li><li class="chapter-item "><li class="part-title">Concurrency: সকাল</li><li class="spacer"></li><li class="chapter-item "><a href="../../concurrency.html"><strong aria-hidden="true">46.</strong> স্বাগতম</a></li><li class="chapter-item "><a href="../../concurrency/threads.html"><strong aria-hidden="true">47.</strong> Threads</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../concurrency/scoped-threads.html"><strong aria-hidden="true">47.1.</strong> স্কোপড Threads</a></li></ol></li><li class="chapter-item "><a href="../../concurrency/channels.html"><strong aria-hidden="true">48.</strong> Channels</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../concurrency/channels/unbounded.html"><strong aria-hidden="true">48.1.</strong> Unbounded Channels</a></li><li class="chapter-item "><a href="../../concurrency/channels/bounded.html"><strong aria-hidden="true">48.2.</strong> Bounded Channels</a></li></ol></li><li class="chapter-item "><a href="../../concurrency/send-sync.html"><strong aria-hidden="true">49.</strong> Send এবং Sync</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../concurrency/send-sync/send.html"><strong aria-hidden="true">49.1.</strong> Send</a></li><li class="chapter-item "><a href="../../concurrency/send-sync/sync.html"><strong aria-hidden="true">49.2.</strong> Sync</a></li><li class="chapter-item "><a href="../../concurrency/send-sync/examples.html"><strong aria-hidden="true">49.3.</strong> উদাহরণসমূহ</a></li></ol></li><li class="chapter-item "><a href="../../concurrency/shared_state.html"><strong aria-hidden="true">50.</strong> Shared State</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../concurrency/shared_state/arc.html"><strong aria-hidden="true">50.1.</strong> Arc</a></li><li class="chapter-item "><a href="../../concurrency/shared_state/mutex.html"><strong aria-hidden="true">50.2.</strong> Mutex</a></li><li class="chapter-item "><a href="../../concurrency/shared_state/example.html"><strong aria-hidden="true">50.3.</strong> উদাহরণ</a></li></ol></li><li class="chapter-item "><a href="../concurrency/morning.html"><strong aria-hidden="true">51.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../concurrency/dining-philosophers.html"><strong aria-hidden="true">51.1.</strong> Dining দার্শনিক</a></li><li class="chapter-item "><a href="../concurrency/link-checker.html"><strong aria-hidden="true">51.2.</strong> মাল্টি থ্রেডেড লিঙ্ক চেকার</a></li></ol></li><li class="chapter-item "><li class="part-title">Concurrency: Afternoon</li><li class="chapter-item "><a href="../../async.html"><strong aria-hidden="true">52.</strong> Async Basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../async/async-await.html"><strong aria-hidden="true">52.1.</strong> async/await</a></li><li class="chapter-item "><a href="../../async/futures.html"><strong aria-hidden="true">52.2.</strong> ভবিষ্যৎ</a></li><li class="chapter-item "><a href="../../async/runtimes.html"><strong aria-hidden="true">52.3.</strong> Runtimes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../async/runtimes/tokio.html"><strong aria-hidden="true">52.3.1.</strong> Tokio</a></li></ol></li><li class="chapter-item "><a href="../../async/tasks.html"><strong aria-hidden="true">52.4.</strong> Tasks-কর্ম</a></li><li class="chapter-item "><a href="../../async/channels.html"><strong aria-hidden="true">52.5.</strong> Async Channels</a></li></ol></li><li class="chapter-item "><a href="../../async/control-flow.html"><strong aria-hidden="true">53.</strong> প্রবাহ নিয়ন্ত্রণ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../async/control-flow/join.html"><strong aria-hidden="true">53.1.</strong> Join</a></li><li class="chapter-item "><a href="../../async/control-flow/select.html"><strong aria-hidden="true">53.2.</strong> Select</a></li></ol></li><li class="chapter-item "><a href="../../async/pitfalls.html"><strong aria-hidden="true">54.</strong> ক্ষতি</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../async/pitfalls/blocking-executor.html"><strong aria-hidden="true">54.1.</strong> এক্সিকিউটর ব্লক করা</a></li><li class="chapter-item "><a href="../../async/pitfalls/pin.html"><strong aria-hidden="true">54.2.</strong> Pin</a></li><li class="chapter-item "><a href="../../async/pitfalls/async-traits.html"><strong aria-hidden="true">54.3.</strong> Async Traits</a></li><li class="chapter-item "><a href="../../async/pitfalls/cancellation.html"><strong aria-hidden="true">54.4.</strong> Cancellation</a></li></ol></li><li class="chapter-item "><a href="../concurrency/afternoon.html"><strong aria-hidden="true">55.</strong> অনুশীলন</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../concurrency/dining-philosophers-async.html"><strong aria-hidden="true">55.1.</strong> Dining দার্শনিক</a></li><li class="chapter-item "><a href="../concurrency/chat-app.html"><strong aria-hidden="true">55.2.</strong> Broadcast Chat Application</a></li></ol></li><li class="chapter-item "><li class="part-title">চূড়ান্ত কিছু কথা</li><li class="spacer"></li><li class="chapter-item "><a href="../../thanks.html"><strong aria-hidden="true">56.</strong> ধন্যবাদ!</a></li><li class="chapter-item "><a href="../../other-resources.html"><strong aria-hidden="true">57.</strong> অন্যান্য উৎসসমূহ</a></li><li class="chapter-item "><a href="../../credits.html"><strong aria-hidden="true">58.</strong> ক্রেডিটস</a></li><li class="chapter-item affix "><li class="part-title">সমাধানসমূহ</li><li class="spacer"></li><li class="chapter-item "><a href="../solutions.html"><strong aria-hidden="true">59.</strong> সমাধানসমূহ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="solutions-morning.html"><strong aria-hidden="true">59.1.</strong> প্রথম দিনঃ সকাল</a></li><li class="chapter-item "><a href="solutions-afternoon.html"><strong aria-hidden="true">59.2.</strong> প্রথম দিনঃ বিকাল</a></li><li class="chapter-item "><a href="../day-2/solutions-morning.html"><strong aria-hidden="true">59.3.</strong> দ্বিতীয় দিনঃ সকাল</a></li><li class="chapter-item "><a href="../day-2/solutions-afternoon.html"><strong aria-hidden="true">59.4.</strong> দ্বিতীয় দিনঃ বিকাল</a></li><li class="chapter-item "><a href="../day-3/solutions-morning.html"><strong aria-hidden="true">59.5.</strong> তৃতীয় দিনঃ সকাল</a></li><li class="chapter-item "><a href="../day-3/solutions-afternoon.html"><strong aria-hidden="true">59.6.</strong> তৃতীয় দিনঃ বিকাল</a></li><li class="chapter-item "><a href="../bare-metal/solutions-morning.html"><strong aria-hidden="true">59.7.</strong> Bare Metal Rust: সকাল</a></li><li class="chapter-item "><a href="../bare-metal/solutions-afternoon.html"><strong aria-hidden="true">59.8.</strong> Bare Metal Rust: বিকাল</a></li><li class="chapter-item "><a href="../concurrency/solutions-morning.html"><strong aria-hidden="true">59.9.</strong> Concurrency: বিকাল</a></li><li class="chapter-item "><a href="../concurrency/solutions-afternoon.html"><strong aria-hidden="true">59.10.</strong> Concurrency: বিকাল</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Comprehensive Rust 🦀</h1>
+
+                    <div class="right-buttons">
+                        <button id="language-toggle" class="icon-button" type="button"
+                                title="Change language" aria-label="Change language"
+                                aria-haspopup="true" aria-expanded="false"
+                                aria-controls="language-list">
+                            <i class="fa fa-globe"></i>
+                        </button>
+                        <ul id="language-list" class="theme-popup" aria-label="Languages" role="menu">
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="en">English</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="pt-BR">Brazilian Portuguese</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="ko">한국어 (Korean)</a>
+                          </button></li>
+                        </ul>
+
+                        <script>
+                          let langToggle = document.getElementById("language-toggle");
+                          let langList = document.getElementById("language-list");
+                          langToggle.addEventListener("click", (event) => {
+                              langList.style.display = langList.style.display == "block" ? "none" : "block";
+                          });
+                          let selectedLang = document.getElementById("bn");
+                          if (selectedLang) {
+                              selectedLang.parentNode.classList.add("theme-selected");
+                          }
+
+                          // The path to the root, taking the current
+                          // language into account.
+                          let full_path_to_root = "https://google.github.io/comprehensive-rust/";
+                          // The page path (mdbook only gives us
+                          // access to the path to the Markdown file).
+                          let path = "exercises/day-1/implicit-conversions.md".replace(/\.md$/, ".html");
+                          for (let lang of langList.querySelectorAll("a")) {
+                              if (lang.id == "en") {
+                                  lang.href = `${full_path_to_root}${path}`;
+                              } else {
+                                  lang.href = `${full_path_to_root}${lang.id}/${path}`;
+                              }
+                          }
+                        </script>
+
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/google/comprehensive-rust" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/google/comprehensive-rust/edit/main/po/bn.po"
+                           title="Suggest an edit to the translation" aria-label="Suggest an edit to the translation"
+                           target="_blank">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="implicit-conversions"><a class="header" href="#implicit-conversions">Implicit Conversions</a></h1>
+<p>Rust will not automatically apply <em>implicit conversions</em> between types (<a href="https://en.cppreference.com/w/cpp/language/implicit_conversion">unlike
+C++</a>). You can see this in a program like this:</p>
+<pre><pre class="playground"><code class="language-rust editable compile_fail edition2021">fn multiply(x: i16, y: i16) -&gt; i16 {
+    x * y
+}
+
+fn main() {
+    let x: i8 = 15;
+    let y: i16 = 1000;
+
+    println!(&quot;{x} * {y} = {}&quot;, multiply(x, y));
+}</code></pre></pre>
+<p>The Rust integer types all implement the <a href="https://doc.rust-lang.org/std/convert/trait.From.html"><code>From&lt;T&gt;</code></a> and <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><code>Into&lt;T&gt;</code></a>
+traits to let us convert between them. The <code>From&lt;T&gt;</code> trait has a single <code>from()</code>
+method and similarly, the <code>Into&lt;T&gt;</code> trait has a single <code>into()</code> method.
+Implementing these traits is how a type expresses that it can be converted into
+another type.</p>
+<p>The standard library has an implementation of <code>From&lt;i8&gt; for i16</code>, which means
+that we can convert a variable <code>x</code> of type <code>i8</code> to an <code>i16</code> by calling 
+<code>i16::from(x)</code>. Or, simpler, with <code>x.into()</code>, because <code>From&lt;i8&gt; for i16</code>
+implementation automatically create an implementation of <code>Into&lt;i16&gt; for i8</code>.</p>
+<p>The same applies for your own <code>From</code> implementations for your own types, so it is
+sufficient to only implement <code>From</code> to get a respective <code>Into</code> implementation automatically.</p>
+<ol>
+<li>
+<p>Execute the above program and look at the compiler error.</p>
+</li>
+<li>
+<p>Update the code above to use <code>into()</code> to do the conversion.</p>
+</li>
+<li>
+<p>Change the types of <code>x</code> and <code>y</code> to other things (such as <code>f32</code>, <code>bool</code>,
+<code>i128</code>) to see which types you can convert to which other types. Try
+converting small types to big types and the other way around. Check the
+<a href="https://doc.rust-lang.org/std/convert/trait.From.html">standard library documentation</a> to see if <code>From&lt;T&gt;</code> is implemented for
+the pairs you check.</p>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="morning.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="for-loops.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="morning.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="for-loops.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../speaker-notes.js"></script>
+
+
+    </div>
+    </body>
+
+<!-- google.github.io/comprehensive-rust/bn/exercises/day-1/implicit-conversions.html  08:57:37 GMT -->
+</html>
