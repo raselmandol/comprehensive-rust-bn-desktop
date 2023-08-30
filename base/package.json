@@ -1,0 +1,26 @@
+{
+    "name": "comprehensive-rust-bn",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "electron .",
+        "build": "electron-builder"
+    },
+    "author": "Md. Rasel Mandol",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^26.1.0",
+        "electron-builder": "^22.14.13"
+    },
+    "build": {
+        "productName": "Comprehensive Rust-bn",
+        "mac": {
+            "icon": "icon.png"
+        },
+        "win": {
+            "icon": "icon.png"
+        }
+    }
+}
