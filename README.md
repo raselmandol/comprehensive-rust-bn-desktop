@@ -55,7 +55,7 @@ npm run build
 **Windows**
 
 - Install npm and electron
-- Build by electron Builder
+- Build with electron Builder
 ```bash
 # Install electron
 npm install -g electron
