@@ -40,7 +40,7 @@ If your problem is not addressed yet, [please open a new issue](https://github.c
 **Mac**
 
 - Install npm and electron
-- Build by electron Builder
+- Build with electron Builder
 ```bash
 # Install electron
 npm install -g electron
