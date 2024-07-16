@@ -4,7 +4,7 @@
 
 Comprehensive Rust 🦀, a multi-day Rust course developed by the Android team. The course covers all aspects of Rust, from basic syntax to generics and error handling. It also includes deep dives on Android, bare-metal, and concurrency.
 
-The project was released for web platform only(afaik). So I tried to make this for Desktop environments also. I have made the application using electron js, see here [electron js](hhttps://github.com/electron/electron)
+The project was released for web platform only(afaik). So I tried to make this for Desktop environments also. I have made the application using electron js, see here [electron js](https://github.com/electron/electron)
 
 
 
