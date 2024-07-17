@@ -1,5 +1,5 @@
-
 ## Comprehensive Rust-bn 🦀
+
 ## For Google's GitHub repository, see [here](https://github.com/google/comprehensive-rust).
 
 Comprehensive Rust 🦀, a multi-day Rust course developed by the Android team. The course covers all aspects of Rust, from basic syntax to generics and error handling. It also includes deep dives on Android, bare-metal, and concurrency.
@@ -11,7 +11,7 @@ The project was released for web platform only(afaik). So I tried to make this f
 
 ![CC Screenshot](https://raw.githubusercontent.com/raselmandol/comprehensive-rust-bn-desktop/main/screenshots/1.png)
 
-Comprehensive Rust-bn is a base/ electron app can be built on Mac, Linux and Windows using electron js.
+Comprehensive Rust-bn is a base/electron app can be built on Mac, Linux and Windows using electron js.
 
 
 ## Installing Comprehensive Rust-bn
@@ -29,7 +29,7 @@ Security is very important to us. If you have any issue regarding security, plea
 
 ## Bugs and Feature Requests
 
-Have a bug? [please open a new issue](https://github.com/google/comprehensive-rust/issues/new).
+found a bug? [please open a new issue](https://github.com/google/comprehensive-rust/issues/new).
 
 
 If your problem is not addressed yet, [please open a new issue](https://github.com/google/comprehensive-rust/issues/new).
@@ -79,4 +79,4 @@ Open `Programs and Features` from `Control Panel`
 
 Code released under the [Apache license](LICENSE).
 Images are copyrighted by [Docker, Inc](https://www.docker.com/).
- Project Copyright [Google Open Source](https://github.com/google/) and builder [electron js](https://github.com/electron/electron).
+Project Copyright [Google Open Source](https://github.com/google/) and builder [electron js](https://github.com/electron/electron).
