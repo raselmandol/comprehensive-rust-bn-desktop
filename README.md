@@ -77,6 +77,4 @@ Open `Programs and Features` from `Control Panel`
 
 ## Copyright and License
 
-Code released under the [Apache license](LICENSE).
-Images are copyrighted by [Docker, Inc](https://www.docker.com/).
 Project Copyright [Google Open Source](https://github.com/google/) and builder [electron js](https://github.com/electron/electron).
