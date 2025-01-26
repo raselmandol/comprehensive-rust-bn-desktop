@@ -1,5 +1,8 @@
 ## Comprehensive Rust-bn 🦀
 
+[![GitHub release](https://img.shields.io/github/v/release/raselmandol/comprehensive-rust-bn-desktop)](#) [![GitHub release date](https://img.shields.io/github/release-date/raselmandol/comprehensive-rust-bn-desktop)](#) [![GitHub last commit](https://img.shields.io/github/last-commit/raselmandol/comprehensive-rust-bn-desktop)](#)
+
+
 ## For Google's GitHub repository, see [here](https://github.com/google/comprehensive-rust).
 
 Comprehensive Rust 🦀, a multi-day Rust course developed by the Android team. The course covers all aspects of Rust, from basic syntax to generics and error handling. It also includes deep dives on Android, bare-metal, and concurrency.
